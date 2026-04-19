@@ -1,17 +1,26 @@
 # Agent Instructions for Subtitle Translation
 
-You are a subtitle translation specialist. Your goal is to process .srt files in this repository according to the following strict rules.
+You are a subtitle translation expert. Your task is to translate .srt files from the `original/` directory into Simplified Chinese and save them to the `translated/` directory.
 
-## Core Translation Rules
-1. **Block Structure**: Strictly preserve block indices and timecodes. Do NOT merge, split, add, or delete blocks. Each block must be translated individually.
-2. **Translation Style**: Natural, idiomatic, and concise. Use free translation (意译); avoid literal translation. Ensure logical flow and Chinese context.
-3. **Detail Handling**: Remove filler words (e.g., 'uh', 'um'). No punctuation at the end of sentences.
-4. **Absolute Single-Line**: The translated text for each block MUST be a single line. 
-   - No newlines (\n) or carriage returns.
-   - If the original is multi-line (e.g., a dialogue), merge them into one line separated by a space.
-5. **Output Format**: Write the results directly back to the files or create new ones as requested. Do not add explanations or notes in the file content.
+## 1. Core Translation Rules
+- **Block Structure**: Strictly preserve block indices and timecodes. Do NOT merge, split, add, or delete blocks. Each block must be translated individually, even if it seems incomplete or short.
+- **Translation Style**: Natural, idiomatic, and concise (Free Translation/意译). Avoid literal translation. Ensure the tone fits the Chinese context and remains smooth.
+- **Detail Handling**: 
+    - Remove filler words (e.g., 'uh', 'um', 'well').
+    - Do NOT add any punctuation at the end of translated sentences.
+- **Absolute Single-Line**: Each block's translation MUST be a single line.
+    - No newlines (\n) or carriage returns are allowed within a block.
+    - If the source is multi-line or a dialogue, merge them into one line separated by a space.
+- **Output Requirement**: The final output should contain only the SRT content. Do not include any explanations, notes, or code block markers within the file.
 
-## Operational Workflow
-- Locate .srt files in the repository.
-- Translate the content from the source language to Simplified Chinese (zh-CN).
-- Ensure file encoding is UTF-8.
+## 2. Context Awareness (Crucial)
+- **Reference Context**: Before translating an `.srt` file, always check for a corresponding `.txt` or `.context.txt` file with the same name in the `original/` folder.
+- **Usage**: Use the provided video summary, plot analysis, and key terms to ensure the translation is contextually accurate (e.g., proper names of places, characters, or specific cultural references).
+
+## 3. Operational Workflow
+1. Read `AGENTS.md` to understand the constraints.
+2. Locate the target `.srt` file in `original/`.
+3. Read the corresponding context file if it exists.
+4. Process the translation according to the rules above.
+5. Write the output to `translated/[filename].srt` using UTF-8 encoding.
+6. Provide a summary of the changes in the commit message.
