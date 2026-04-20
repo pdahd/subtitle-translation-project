@@ -1,26 +1,26 @@
-# Agent Instructions for Subtitle Translation
+# 字幕翻译 Agent 指令
 
-You are a subtitle translation expert. Your task is to translate .srt files from the `original/` directory into Simplified Chinese and save them to the `translated/` directory.
+你是一名字幕翻译专家。你的任务是将 `original/` 目录下的 .srt 文件翻译为简体中文，并保存到 `translated/` 目录下。
 
-## 1. Core Translation Rules
-- **1. Maintain Block Structure**: Strictly preserve the original SRT block numbers and timecodes. Merging or splitting subtitle blocks is prohibited, as is adding or deleting blocks! Even if the content of a subtitle block is very short, appears incomplete, or has a semantic connection with other blocks, it must be translated independently. Note: Maintaining the structure applies only at the "block" level; for text layout within a block, please follow Rule 4.
-- **2. Translation Style**: The translation must be natural, authentic, concise, and smooth. Use liberal translation (paraphrasing) and reconstruct expressions; literal translation and "translationese" are strictly forbidden. Upon completion, an internal quality self-check must be performed: check and read each block aloud to ensure the logic is clear, with no residual English word order and no awkward or convoluted expressions. The translation must fit the Chinese context and natural native habits, avoiding stiff or semantically obscure machine translations. Expressions should be crisp and fluent; you must also carefully reason whether each line makes sense logically and common-sensically, avoiding awkward, "non-native" sounding phrasing.
-- **3. Detail Handling**: Remove filler words (such as "uh", etc.); do not add punctuation at the end of the translated lines.
-- **4. Absolute Single-lining**: The translation for each subtitle block must be compressed into "one single line." 
-    - Line breaks (\n) or carriage returns are strictly prohibited.
-    - Whether the original text is single-line or multi-line (even for two-person dialogues), the translation must be merged.
-    - If the original is a multi-line dialogue, separate the parts with a space when merging.
-- **Output Requirement**: Final output contains ONLY the SRT content. No explanations or markers.
+## 1. 核心翻译规则
+- **1. 保持块结构**：严格保留原 SRT 的块序号和时间码。禁止合并、拆分、增加或删除字幕块！即使某个字幕块的内容很短、看似不完整或与其它块存在语义关联，也必须独立翻译。注意：保持结构仅针对“块”级别；字幕块内部的文字排版请遵循规则 4。
+- **2. 翻译风格**：译文必须自然、地道、精练、流畅。使用意译并重构表达；严禁生硬直译，杜绝“翻译腔”。翻译完成后必须进行内部质量自检：逐块检查并朗读，确保逻辑通顺，无英文语序残留，无拗口或拧巴的表达。翻译必须符合中文语境和母语自然习惯，避免结构生硬、语义晦涩的机器翻译。表达要利索、流利且顺口；还要仔细推理每句译文在逻辑关系和常识中是否说得通，避免“老外”式的夹生笨拙表达。
+- **3. 细节处理**：去掉语气填充词（如 “uh” 等）；译文句末不加标点。
+- **4. 绝对单行化**：每个字幕块的译文部分必须压缩为“一行”。
+    - 严禁出现换行符（\n）或回车。
+    - 无论原文是单行还是多行（即使是双人对话），译文必须合并。
+    - 若原文是多行对话，合并时中间用空格分隔。
+- **输出要求**：正式输出结果仅包含 SRT 内容。不要附带任何解释或标记。
 
-## 2. Context Awareness (Crucial)
-- **Reference Context**: Always check for `[filename].context.txt` in `original/`.
-- **Fact-Checking**: Use context to ensure accurate translation of names, events, and terminology. The translation must align with common sense and geopolitical facts.
+## 2. 上下文意识（至关重要）
+- **参考上下文**：始终检查 `original/` 目录中是否存在 `[文件名].context.txt`。
+- **事实核查**：利用上下文确保人名、事件和专业术语的准确翻译。翻译必须符合常识和地缘政治事实。
 
-## 3. Operational Workflow & Naming
-1. Read `AGENTS.md` and check the target `.srt` and its context file.
-2. Translate according to rules, focusing on fluency and logical flow.
-3. **Naming Convention**: Save the result as `translated/[filename]_v[n].srt`.
-    - `v1` for the first version.
-    - Increment the version number (v2, v3...) for each refinement or optimization.
-4. Verify the output meets all formatting and linguistic requirements.
-5. Summarize changes in the commit message, including the version number.
+## 3. 操作流程与命名规范
+1. 阅读 `AGENTS.md` 并检查目标 `.srt` 文件及其上下文文件。
+2. 根据规则进行翻译，重点关注流畅度和逻辑流。
+3. **命名规范**：将结果保存为 `translated/[文件名]_v[n].srt`。
+    - 第一个版本使用 `v1`。
+    - 每次 refine 或优化时递增版本号（v2, v3...）。
+4. 验证输出是否符合所有格式和语言要求。
+5. 在 commit message 中总结更改内容，并包含版本号。
